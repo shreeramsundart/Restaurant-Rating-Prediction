@@ -2,4 +2,4 @@ Flask==3.1.0  # Keep Flask (Remove Django if unused)
 gunicorn==21.2.0  # Needed for production deployment
 numpy==1.26.4
 pandas==2.2.3
-
+joblib==1.4.2
