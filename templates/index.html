@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Rating Predictor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-cover bg-center bg-no-repeat min-h-screen flex flex-col" style="background-image: url('{{ url_for('static', filename='Images/Restaurant Background.jpg') }}');">
+    <div class="flex-grow flex items-center justify-center">
+        <div class="bg-black bg-opacity-70 p-8 rounded-2xl shadow-xl w-11/12 md:w-2/3 lg:w-1/2">
+            <h1 class="text-3xl font-bold text-center text-white mb-6">🍽️ Restaurant Rating Prediction</h1>
+            
+            <form action="/" method="post" class="space-y-4">
+                <label class="block text-white">Estimated Average Cost for Two:</label>
+                <input type="number" name="average_cost" required class="w-full px-4 py-2 rounded-lg border bg-gray-100 text-gray-900">
+                
+                <label class="block text-white">Table Booking Available?</label>
+                <select name="table_booking" class="w-full px-4 py-2 rounded-lg border bg-gray-100 text-gray-900">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <label class="block text-white">Online Delivery Available?</label>
+                <select name="online_delivery" class="w-full px-4 py-2 rounded-lg border bg-gray-100 text-gray-900">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                
+                <label class="block text-white">Price Range:</label>
+                <select name="price_range" class="w-full px-4 py-2 rounded-lg border bg-gray-100 text-gray-900">
+                    <option value="1">1 (Cheapest)</option>
+                    <option value="2">2 (Affordable)</option>
+                    <option value="3">3 (Expensive)</option>
+                    <option value="4">4 (Very Expensive)</option>
+                </select>
+                
+                <button type="submit" class="w-full bg-orange-400 hover:bg-orange-500 text-white font-semibold py-3 rounded-lg transition">Predict Rating</button>
+            </form>
+
+            {% if rating %}
+            <div class="mt-6 text-center bg-white bg-opacity-20 p-4 rounded-lg">
+                <h2 class="text-xl font-bold text-white">Prediction Result</h2>
+                <p class="text-white">The restaurant is rated as: <strong>{{ rating }}</strong></p>
+                <p class="text-white">Predicted Rating Score: <strong>{{ score }}</strong></p>
+            </div>
+            {% endif %}
+
+            {% if error %}
+            <p class="text-center text-red-400 mt-4"><strong>{{ error }}</strong></p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-full bg-black bg-opacity-50 text-white text-center py-4 mt-8">
+        <p>© 2025 Shree Ram Sundar. All rights reserved.</p>
+    </footer>
+</body>
+</html>
